@@ -38,6 +38,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flood_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.flood_button);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.clear_button);
             this.panel1.Controls.Add(this.trackBar3);
@@ -151,6 +153,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(140, 53);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // flood_button
+            // 
+            this.flood_button.Location = new System.Drawing.Point(78, 240);
+            this.flood_button.Name = "flood_button";
+            this.flood_button.Size = new System.Drawing.Size(75, 23);
+            this.flood_button.TabIndex = 3;
+            this.flood_button.Text = "flood";
+            this.flood_button.UseVisualStyleBackColor = true;
+            this.flood_button.Click += new System.EventHandler(this.flood_button_Click);
+            // 
             // Task1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,5 +195,6 @@
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button flood_button;
     }
 }
