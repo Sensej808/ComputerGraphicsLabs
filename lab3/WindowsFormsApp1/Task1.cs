@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -20,8 +14,11 @@ namespace WindowsFormsApp1
             pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
             pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
+
+        private bool isMosaicPressed = false;
         private bool isFloodPressed = false;
         private bool isMouseDown = false;
+        private Bitmap originalImage;
         Graphics g;
         Pen pen = new Pen(Color.Black, 3f);
         int prev_x = -1, prev_y = -1;
@@ -59,6 +56,11 @@ namespace WindowsFormsApp1
             }
 
         }
+
+        public void MosaicFlood(int x, int y, Color border, Bitmap pattern)
+        {
+            g.DrawImage(pattern,x - pattern.Width / 2,y - pattern.Height / 2);
+        }
         private void set_size()
         {
             Rectangle rec = Screen.GetBounds(this);
@@ -70,6 +72,11 @@ namespace WindowsFormsApp1
             if (isFloodPressed)
             {
                 floodArea(e.X, e.Y, pen.Color);
+                pictureBox1.Image = map;
+            }
+            else if (isMosaicPressed)
+            {
+                MosaicFlood(e.X, e.Y, pen.Color, originalImage);
                 pictureBox1.Image = map;
             }
             else
@@ -92,6 +99,27 @@ namespace WindowsFormsApp1
         private void flood_button_Click(object sender, EventArgs e)
         {
             isFloodPressed = !isFloodPressed;
+            isMosaicPressed = !false;
+        }
+
+        private void LoadImageButton_Click(object sender, EventArgs e)
+        {
+            isMosaicPressed = true;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.png;*.jpg;*.jpeg;*.bmp|All files|*.*";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    originalImage = new Bitmap(openFileDialog.FileName);
+                    
+                }
+            }
+        }
+
+        private void clear_button_Click(object sender, EventArgs e)
+        {
+            g.Clear(BackColor);
+            pictureBox1.Image = map;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
