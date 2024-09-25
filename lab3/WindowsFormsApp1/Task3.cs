@@ -14,9 +14,7 @@ namespace WindowsFormsApp1
     public partial class Task3 : Form
     {
         List<Tuple<Point, Color>> vertices;
-        static Bitmap bitmap = new Bitmap(325, 399);
-        [DllImport("Kernel32.dll")]
-        static extern Boolean AllocConsole();
+        static Bitmap bitmap = new Bitmap(523, 491);
 
         public Task3()
         {
@@ -30,7 +28,7 @@ namespace WindowsFormsApp1
         private void GradientTraing_FormClosed(object sender, FormClosedEventArgs e)
         {
             canvas.Image = null;
-            bitmap = new Bitmap(325, 399);
+            bitmap = new Bitmap(523, 491);
             Form ifrm = Application.OpenForms[0];
             ifrm.Show();
         }
@@ -46,7 +44,7 @@ namespace WindowsFormsApp1
         private void Clear_Click(object sender, EventArgs e)
         {
             canvas.Image = null;
-            bitmap = new Bitmap(325, 399);
+            bitmap = new Bitmap(523, 491);
         }
 
         private void canvas_MouseClick(object sender, MouseEventArgs e)
