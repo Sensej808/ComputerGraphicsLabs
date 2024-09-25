@@ -31,5 +31,16 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Part3ToolStripMenyItem_Click(object sender, EventArgs e)
+        {
+            Task3 task3 = new Task3();
+            task3.Show();
+        }
     }
 }

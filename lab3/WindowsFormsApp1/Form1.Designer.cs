@@ -47,9 +47,10 @@
             this.задание3ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(968, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // Part1ToolStripMenuItem
             // 
@@ -64,21 +65,21 @@
             // Part1aToolStripMenuItem
             // 
             this.Part1aToolStripMenuItem.Name = "Part1aToolStripMenuItem";
-            this.Part1aToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.Part1aToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.Part1aToolStripMenuItem.Text = "Часть а";
             this.Part1aToolStripMenuItem.Click += new System.EventHandler(this.Part1aToolStripMenuItem_Click);
             // 
             // Part1bToolStripMenuItem
             // 
             this.Part1bToolStripMenuItem.Name = "Part1bToolStripMenuItem";
-            this.Part1bToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.Part1bToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.Part1bToolStripMenuItem.Text = "Часть б";
             this.Part1bToolStripMenuItem.Click += new System.EventHandler(this.Part1bToolStripMenuItem_Click);
             // 
             // Part1cToolStripMenuItem
             // 
             this.Part1cToolStripMenuItem.Name = "Part1cToolStripMenuItem";
-            this.Part1cToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.Part1cToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.Part1cToolStripMenuItem.Text = "Часть в";
             this.Part1cToolStripMenuItem.Click += new System.EventHandler(this.Part1cToolStripMenuItem_Click);
             // 
@@ -93,12 +94,13 @@
             this.задание3ToolStripMenuItem.Name = "задание3ToolStripMenuItem";
             this.задание3ToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
             this.задание3ToolStripMenuItem.Text = "Задание 3";
+            this.задание3ToolStripMenuItem.Click += new System.EventHandler(this.Part3ToolStripMenyItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(968, 465);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
