@@ -74,7 +74,6 @@ namespace WindowsFormsApp1
             double rstep = (end.R - start.R) / (1.0 * seed - 1);
             double gstep = (end.G - start.G) / (1.0 * seed - 1);
             double bstep = (end.B - start.B) / (1.0 * seed - 1);
-            //double bstep = (1.0 * end.B - start.B) / (seed - 1);
 
             for (int i = 0; i < seed; i++)
             {

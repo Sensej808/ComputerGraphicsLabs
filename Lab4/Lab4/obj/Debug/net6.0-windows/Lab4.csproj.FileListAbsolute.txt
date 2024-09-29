@@ -1,0 +1,17 @@
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.csproj.AssemblyReference.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.csproj.GenerateResource.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.AssemblyInfoInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.AssemblyInfo.cs
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\bin\Debug\net6.0-windows\Lab4.exe
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\bin\Debug\net6.0-windows\Lab4.deps.json
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\bin\Debug\net6.0-windows\Lab4.runtimeconfig.json
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\bin\Debug\net6.0-windows\Lab4.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\bin\Debug\net6.0-windows\Lab4.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\refint\Lab4.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.genruntimeconfig.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\ref\Lab4.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\Lab4\Lab4\obj\Debug\net6.0-windows\Lab4.MainScreen.resources
