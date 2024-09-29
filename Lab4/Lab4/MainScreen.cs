@@ -244,14 +244,13 @@ namespace Lab4
         //
         public void DrawAll(ref Bitmap pixelMap, Color draw_color)
         {
-            int cnt = 0;
             for (int i = 0; i < this.polygons.Count; i++)
             {
                 for (int j = 0; j < this.polygons[i].polygon_points.Count; j++)
                 {
                     pixelMap.SetPixel(this.polygons[i].polygon_points[j].X, this.polygons[i].polygon_points[j].Y, draw_color);
-                    cnt++;
                 }
+                //label1.Text = $"{this.polygons.Count}";
                 //рисуем центр
                 //Graphics g = Graphics.FromImage(pixelMap);
                 //g.FillEllipse(new SolidBrush(Color.Green), this.polygons[i].polygon_points[this.polygons[i].polygon_points.Count - 1].X - 5, this.polygons[i].polygon_points[this.polygons[i].polygon_points.Count - 1].Y - 5, 5 * 2, 5 * 2);
@@ -275,18 +274,21 @@ namespace Lab4
         }
 
         //функци€ котора€ возвращает список точек полигона по заданному списку вершин
-        static public List<Point> GetPolygonPoints(ref List<Point> verices)
+        public List<Point> GetPolygonPoints(ref List<Point> verices)
         {
             List<Point> polygonPoints = new List<Point>();
+            int cnt = 0;
             for (int i = 0; i < verices.Count - 1; i++)
             {
+                cnt++;
                 var line = getLineCoordsByBresenham(verices[i], verices[i + 1]).ToArray();
                 for (int j = 0; j < line.Length; j++)
                 {
                     polygonPoints.Add(line[j]);
                 }
             }
-            if (verices.Count > 0)
+            //label1.Text = $"{cnt} {polygonPoints[polygonPoints.Count-1].X} {polygonPoints.Count}";
+            if (verices.Count > 2)
             {
                 var last_line = getLineCoordsByBresenham(verices[0], verices[verices.Count - 1]).ToArray();
                 for (int j = 0; j < last_line.Length; j++)
@@ -294,7 +296,7 @@ namespace Lab4
                     polygonPoints.Add(last_line[j]);
                 }
             }
-            polygonPoints.Add(GetCenterPolygon(ref verices));
+            //polygonPoints.Add(GetCenterPolygon(ref verices));
             return polygonPoints;
         }
 
