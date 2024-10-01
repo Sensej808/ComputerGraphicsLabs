@@ -31,7 +31,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.clear_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flood_button = new System.Windows.Forms.Button();
+            this.mosaic = new System.Windows.Forms.RadioButton();
+            this.Flood = new System.Windows.Forms.RadioButton();
+            this.Brush = new System.Windows.Forms.RadioButton();
+            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,7 +42,6 @@
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -74,8 +76,10 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.mosaic);
+            this.panel1.Controls.Add(this.Flood);
+            this.panel1.Controls.Add(this.Brush);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.flood_button);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.clear_button);
             this.panel1.Controls.Add(this.trackBar3);
@@ -86,15 +90,52 @@
             this.panel1.Size = new System.Drawing.Size(200, 434);
             this.panel1.TabIndex = 2;
             // 
-            // flood_button
+            // mosaic
             // 
-            this.flood_button.Location = new System.Drawing.Point(61, 187);
-            this.flood_button.Name = "flood_button";
-            this.flood_button.Size = new System.Drawing.Size(75, 23);
-            this.flood_button.TabIndex = 3;
-            this.flood_button.Text = "flood";
-            this.flood_button.UseVisualStyleBackColor = true;
-            this.flood_button.Click += new System.EventHandler(this.flood_button_Click);
+            this.mosaic.AutoSize = true;
+            this.mosaic.Location = new System.Drawing.Point(29, 239);
+            this.mosaic.Name = "mosaic";
+            this.mosaic.Size = new System.Drawing.Size(107, 20);
+            this.mosaic.TabIndex = 7;
+            this.mosaic.TabStop = true;
+            this.mosaic.Text = "MosaicFlood";
+            this.mosaic.UseVisualStyleBackColor = true;
+            this.mosaic.CheckedChanged += new System.EventHandler(this.mosaic_CheckedChanged);
+            // 
+            // Flood
+            // 
+            this.Flood.AutoSize = true;
+            this.Flood.Location = new System.Drawing.Point(29, 213);
+            this.Flood.Name = "Flood";
+            this.Flood.Size = new System.Drawing.Size(63, 20);
+            this.Flood.TabIndex = 6;
+            this.Flood.TabStop = true;
+            this.Flood.Text = "Flood";
+            this.Flood.UseVisualStyleBackColor = true;
+            this.Flood.CheckedChanged += new System.EventHandler(this.Flood_CheckedChanged);
+            // 
+            // Brush
+            // 
+            this.Brush.AutoSize = true;
+            this.Brush.Checked = true;
+            this.Brush.Location = new System.Drawing.Point(29, 187);
+            this.Brush.Name = "Brush";
+            this.Brush.Size = new System.Drawing.Size(62, 20);
+            this.Brush.TabIndex = 5;
+            this.Brush.TabStop = true;
+            this.Brush.Text = "Brush";
+            this.Brush.UseVisualStyleBackColor = true;
+            this.Brush.CheckedChanged += new System.EventHandler(this.Brush_CheckedChanged);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(157, 239);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(22, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "П";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.LoadImageButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -166,16 +207,6 @@
             this.trackBar1.Size = new System.Drawing.Size(104, 56);
             this.trackBar1.TabIndex = 0;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(159, 187);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(22, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "П";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.LoadImageButton_Click);
-            // 
             // Task1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -208,7 +239,9 @@
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button flood_button;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.RadioButton mosaic;
+        private System.Windows.Forms.RadioButton Flood;
+        private System.Windows.Forms.RadioButton Brush;
     }
 }
