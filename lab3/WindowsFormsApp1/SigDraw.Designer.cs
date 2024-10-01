@@ -1,4 +1,4 @@
-﻿namespace graph3
+﻿namespace WindowsFormsApp1
 {
     partial class SigDraw
     {

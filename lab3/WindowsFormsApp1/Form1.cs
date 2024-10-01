@@ -43,5 +43,11 @@ namespace WindowsFormsApp1
             Task3 task3 = new Task3();
             task3.Show();
         }
+
+        private void Part2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Task2 task2 = new Task2();
+            task2.Show();
+        }
     }
 }
