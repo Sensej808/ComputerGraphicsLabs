@@ -30,9 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Part1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Part1aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Part1bToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Part1cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Task2 = new System.Windows.Forms.ToolStripMenuItem();
             this.задание3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -54,34 +51,10 @@
             // 
             // Part1ToolStripMenuItem
             // 
-            this.Part1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Part1aToolStripMenuItem,
-            this.Part1bToolStripMenuItem,
-            this.Part1cToolStripMenuItem});
             this.Part1ToolStripMenuItem.Name = "Part1ToolStripMenuItem";
             this.Part1ToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
             this.Part1ToolStripMenuItem.Text = "Задание 1";
-            // 
-            // Part1aToolStripMenuItem
-            // 
-            this.Part1aToolStripMenuItem.Name = "Part1aToolStripMenuItem";
-            this.Part1aToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
-            this.Part1aToolStripMenuItem.Text = "Часть а";
-            this.Part1aToolStripMenuItem.Click += new System.EventHandler(this.Part1aToolStripMenuItem_Click);
-            // 
-            // Part1bToolStripMenuItem
-            // 
-            this.Part1bToolStripMenuItem.Name = "Part1bToolStripMenuItem";
-            this.Part1bToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
-            this.Part1bToolStripMenuItem.Text = "Часть б";
-            this.Part1bToolStripMenuItem.Click += new System.EventHandler(this.Part1bToolStripMenuItem_Click);
-            // 
-            // Part1cToolStripMenuItem
-            // 
-            this.Part1cToolStripMenuItem.Name = "Part1cToolStripMenuItem";
-            this.Part1cToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
-            this.Part1cToolStripMenuItem.Text = "Часть в";
-            this.Part1cToolStripMenuItem.Click += new System.EventHandler(this.Part1cToolStripMenuItem_Click);
+            this.Part1ToolStripMenuItem.Click += new System.EventHandler(this.Part1ToolStripMenuItem_Click);
             // 
             // Task2
             // 
@@ -119,9 +92,6 @@
         private System.Windows.Forms.ToolStripMenuItem Task2;
         private System.Windows.Forms.ToolStripMenuItem задание3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Part1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Part1aToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Part1bToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Part1cToolStripMenuItem;
     }
 }
 

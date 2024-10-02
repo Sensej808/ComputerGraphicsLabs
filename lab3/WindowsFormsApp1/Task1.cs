@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
         public Task1()
         {
             InitializeComponent();
+            
             set_size();
             pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
             pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
@@ -23,7 +24,7 @@ namespace WindowsFormsApp1
         bool isMouseDown;
         private Bitmap originalImage;
         Graphics g;
-        Pen pen = new Pen(Color.Black, 3f);
+        Pen pen = new Pen(Color.Black, 4f);
         int prev_x = -1, prev_y = -1;
         Bitmap map;
 
@@ -105,7 +106,7 @@ namespace WindowsFormsApp1
                 {
                     if (mask[i, j])
                     {
-                        map.SetPixel(i, j, pattern.GetPixel((i - x % pattern.Width)%pattern.Width, (j - y % pattern.Height)%pattern.Height));
+                        map.SetPixel(i, j, pattern.GetPixel((i + x % pattern.Width)%pattern.Width, (j + y % pattern.Height)%pattern.Height));
                     }
                 }
             }
@@ -119,7 +120,6 @@ namespace WindowsFormsApp1
                 x--;
             }
 
-            Queue<Point> queue = new Queue<Point>();
             List<Point> border = new List<Point>();
             Point start = new Point(x, y);
             Color border_c = map.GetPixel(start.X, start.Y);
@@ -266,6 +266,15 @@ namespace WindowsFormsApp1
             if (fairyStick.Checked)
             {
                 cur_tool = Tool.FairyStick;
+            }
+        }
+
+        private void color1_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                (sender as Control).BackColor = colorDialog.Color;
+                pen.Color = (sender as Control).BackColor;
             }
         }
 

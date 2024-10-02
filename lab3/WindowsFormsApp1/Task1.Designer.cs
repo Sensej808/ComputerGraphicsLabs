@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using System.Windows.Forms;
+
+namespace WindowsFormsApp1
 {
     partial class Task1
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.clear_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,6 +39,7 @@
             this.Brush = new System.Windows.Forms.RadioButton();
             this.button4 = new System.Windows.Forms.Button();
             this.fairyStick = new System.Windows.Forms.RadioButton();
+            this.color1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +70,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.color1);
             this.panel1.Controls.Add(this.fairyStick);
             this.panel1.Controls.Add(this.mosaic);
             this.panel1.Controls.Add(this.Flood);
@@ -136,6 +141,16 @@
             this.fairyStick.UseVisualStyleBackColor = true;
             this.fairyStick.CheckedChanged += new System.EventHandler(this.fairy_CheckedChanged);
             // 
+            // color1
+            // 
+            this.color1.Location = new System.Drawing.Point(9, 24);
+            this.color1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.color1.Name = "color1";
+            this.color1.Size = new System.Drawing.Size(170, 50);
+            this.color1.TabIndex = 8;
+            this.color1.UseVisualStyleBackColor = true;
+            this.color1.Click += new System.EventHandler(this.color1_Click);
+            // 
             // Task1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -154,6 +169,7 @@
 
         #endregion
 
+        private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button clear_button;
         private System.Windows.Forms.Panel panel1;
@@ -162,5 +178,6 @@
         private System.Windows.Forms.RadioButton Flood;
         private System.Windows.Forms.RadioButton Brush;
         private System.Windows.Forms.RadioButton fairyStick;
+        private System.Windows.Forms.Button color1;
     }
 }
