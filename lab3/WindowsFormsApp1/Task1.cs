@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.ConstrainedExecution;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
             cur_tool = Tool.Brush;
         }
 
-        int center_x, center_y;
         bool[,] mask;
         Tool cur_tool;
         bool isMouseDown;
@@ -111,6 +110,66 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        public List<Point> AreaBorder(int x, int y)
+        {
+            Color bg_c = map.GetPixel(x, y);
+            while(bg_c == map.GetPixel(x,y)) 
+            {
+                x--;
+            }
+
+            Queue<Point> queue = new Queue<Point>();
+            List<Point> border = new List<Point>();
+            Point start = new Point(x, y);
+            Color border_c = map.GetPixel(start.X, start.Y);
+            Stack<Point> stack = new Stack<Point>();
+            stack.Push(start);
+
+            while (stack.Count > 0)
+            {
+                Point p = stack.Pop();
+                if (!border.Contains(p))
+                {
+                    border.Add(p);
+                    // Отметить текущую точку границы
+
+                    // Добавить соседние точки
+                    foreach (Point neighbor in GetNeighbors(p))
+                    {
+                        if (map.GetPixel(neighbor.X, neighbor.Y) == border_c && HaveNeighsColor(neighbor, bg_c))
+                        {
+                            stack.Push(neighbor);
+                        }
+                    }
+                }
+
+                
+
+            }
+
+            return border;
+        }
+
+        private bool HaveNeighsColor(Point p, Color c)
+        {
+            return map.GetPixel(p.X + 1, p.Y).ToArgb() == c.ToArgb() ||
+                   map.GetPixel(p.X - 1, p.Y).ToArgb() == c.ToArgb() ||
+                   map.GetPixel(p.X, p.Y + 1).ToArgb() == c.ToArgb() ||
+                   map.GetPixel(p.X, p.Y - 1).ToArgb() == c.ToArgb();
+        }
+        private IEnumerable<Point> GetNeighbors(Point p)
+        {
+            // Возвращает соседние точки
+            yield return new Point(p.X + 1, p.Y);
+            yield return new Point(p.X - 1, p.Y);
+            yield return new Point(p.X, p.Y + 1);
+            yield return new Point(p.X, p.Y - 1);
+            yield return new Point(p.X + 1, p.Y+1);
+            yield return new Point(p.X - 1, p.Y+1);
+            yield return new Point(p.X+1, p.Y - 1);
+            yield return new Point(p.X-1, p.Y - 1);
+        }
         private void set_size()
         {
             Size rec = pictureBox1.Size;
@@ -127,9 +186,16 @@ namespace WindowsFormsApp1
             }
             else if (cur_tool == Tool.Mosaic)
             {
-                center_x = e.X;
-                center_y = e.Y;
                 MosaicFlood(e.X, e.Y, pen.Color, originalImage);
+                pictureBox1.Image = map;
+            }
+            else if (cur_tool == Tool.FairyStick)
+            {
+                List<Point> border = AreaBorder(e.X, e.Y);
+                foreach (Point p in border)
+                {
+                    map.SetPixel(p.X, p.Y, Color.Crimson);
+                }
                 pictureBox1.Image = map;
             }
             else
@@ -192,6 +258,14 @@ namespace WindowsFormsApp1
             if (mosaic.Checked)
             {
                 cur_tool = Tool.Mosaic;
+            }
+        }
+
+        private void fairy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (fairyStick.Checked)
+            {
+                cur_tool = Tool.FairyStick;
             }
         }
 
