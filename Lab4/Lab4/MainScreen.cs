@@ -69,6 +69,7 @@ namespace Lab4
             //очищаем все списки
             polygons.Clear();
             comboBox1.Items.Clear();
+            state = States.None;
         }
 
         //функция которая работает при нажатии мыги
@@ -79,6 +80,8 @@ namespace Lab4
             if (state == States.CreatePolygon)
             {
                 start_polygon_points.Add(new Point(e.X, e.Y));
+                g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
+                pictureBox1.Image = bitmap;
             }
             //если состояние для выбора точки для афинных преобразований то кладём точку сюда
             if (state == States.AffineTransform)
@@ -86,11 +89,9 @@ namespace Lab4
                 //стираем предыдущую точку афинных преобразований
                 g.FillEllipse(new SolidBrush(pictureBox1.BackColor), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
                 pointAffineTransform = new Point(e.X, e.Y);
-
+                g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
+                pictureBox1.Image = bitmap;
             }
-            //рисуем эту точку на экране
-            g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
-            pictureBox1.Image = bitmap;
         }
 
         //кнопка для перемещения полигона 
@@ -215,7 +216,8 @@ namespace Lab4
 
             //масштабируем
             Point center = GetCenterPolygon(ref polygons[index].polygon_vertices);
-            ScallingRelativePoint(ref polygons[index].polygon_vertices, a, b, center.X, center.Y);
+            //ScallingRelativePoint(ref polygons[index].polygon_vertices, a, b, center.X, center.Y);
+            ScallingRelativeCenter(ref polygons[index].polygon_vertices, a, b);
 
             //меняем остальные точки
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
