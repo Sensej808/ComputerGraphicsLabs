@@ -216,8 +216,8 @@ namespace Lab4
 
             //масштабируем
             Point center = GetCenterPolygon(ref polygons[index].polygon_vertices);
-            //ScallingRelativePoint(ref polygons[index].polygon_vertices, a, b, center.X, center.Y);
-            ScallingRelativeCenter(ref polygons[index].polygon_vertices, a, b);
+            ScallingRelativePoint(ref polygons[index].polygon_vertices, a, b, center.X, center.Y);
+            //ScallingRelativeCenter(ref polygons[index].polygon_vertices, a, b);
 
             //меняем остальные точки
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
