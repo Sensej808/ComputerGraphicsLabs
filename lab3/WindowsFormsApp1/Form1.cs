@@ -16,22 +16,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        private void Part1aToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Task1 task1 = new Task1();
-            task1.Show();
-        }
-
-        private void Part1bToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Task1 task1 = new Task1();
-            task1.Show();
-        }
-
-        private void Part1cToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -42,6 +26,18 @@ namespace WindowsFormsApp1
         {
             Task3 task3 = new Task3();
             task3.Show();
+        }
+
+        private void Part2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Task2 task2 = new Task2();
+            task2.Show();
+        }
+
+        private void Part1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Task1 task1 = new Task1();
+            task1.Show();
         }
     }
 }
