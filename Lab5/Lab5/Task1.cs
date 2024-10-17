@@ -46,6 +46,7 @@ namespace Lab5
 
                 //генерируем строку L системы
                 string s = LSystem.GeneratedString(axiom, ref map, generations);
+                label2.Text = s.Count().ToString();
                 //получаем список пар точек(линий) фрактала
                 List<(PointF, PointF)> lines = LSystem.GetFractalVertices(s, new Point(0, 0), 1f, rotationAngle, startAngle, isRandom, 0);
                 //преобразуем список пар точек в список точек для масштабирования
@@ -55,6 +56,9 @@ namespace Lab5
                     pair_points.Add(line.Item1);
                     pair_points.Add(line.Item2);
                 }
+                var minx = pair_points.Min(p => p.X);
+                var maxx = pair_points.Max(p => p.X);
+                label2.Text = (maxx-minx).ToString();
                 //масштабируем весь фрактал на все поле и переносим его в центр
                 Helper.scallingFullWindow(ref pair_points, 0, 0, pictureBox1.Width, pictureBox1.Height);
                 //возвращаемся обратно к парам
