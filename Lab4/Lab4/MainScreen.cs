@@ -10,16 +10,21 @@ namespace Lab4
         /* 
          каждый раз перерисовываю все полигоны, ибо если  этого не делать, то будет стиратьс€ часть точек при стирании точек, при афинных преобразовани€х
         */
-        
+
         List<Point> start_polygon_points; //список дл€ точек из которых будет создан полигон
         Point pointAffineTransform; //точка относительно которой будут делатьс€ афинные преобразовани€
         List<Polygon> polygons; //список полигонов
         static Bitmap bitmap; //карта пикселей
-        States state = States.None; 
+        States state = States.None;
         //состо€ни€ дл€ нажати€ мышки по экрану
+
+        //“очки начала и конца отрезка(дл€ пересечени€ отрезков)
+        private Point? dynamicStartPoint;
+        private Point? dynamicEndPoint;
         enum States
         {
             None,
+            DrawLine,
             CreatePolygon, //точки кладутс€ в список дл€ создани€ полигонов
             AffineTransform //относительно этой точки будут делатьс€ некоторые афинные преобразовани€
         }
@@ -46,7 +51,7 @@ namespace Lab4
             for (int i = 0; i < start_polygon_points.Count; i++)
             {
                 g.FillEllipse(new SolidBrush(pictureBox1.BackColor), start_polygon_points[i].X - 5, start_polygon_points[i].Y - 5, 5 * 2, 5 * 2);
-                
+
             }
             //убираем точку дл€ афинных преобразований
             //g.FillEllipse(new SolidBrush(pictureBox1.BackColor), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
@@ -59,7 +64,7 @@ namespace Lab4
             pictureBox1.Image = bitmap;
             start_polygon_points.Clear();
             state = States.None;
-            
+
         }
         //очищаем экран
         public void button3_Click(object sender, EventArgs e)
@@ -81,17 +86,40 @@ namespace Lab4
             {
                 start_polygon_points.Add(new Point(e.X, e.Y));
                 g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
-                pictureBox1.Image = bitmap;
             }
             //если состо€ние дл€ выбора точки дл€ афинных преобразований то кладЄм точку сюда
-            if (state == States.AffineTransform)
+            else if (state == States.AffineTransform)
             {
                 //стираем предыдущую точку афинных преобразований
                 g.FillEllipse(new SolidBrush(pictureBox1.BackColor), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
                 pointAffineTransform = new Point(e.X, e.Y);
                 g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
-                pictureBox1.Image = bitmap;
+
             }
+            else if (state == States.DrawLine)
+            {
+                if (!dynamicStartPoint.HasValue)
+                {
+                    dynamicStartPoint = e.Location; // ”станавливаем первую точку
+                }
+                else
+                {
+                    dynamicEndPoint = e.Location; // ”станавливаем вторую точку
+                }
+                if (dynamicStartPoint.HasValue && dynamicEndPoint.HasValue)
+                {
+                    g.DrawLine(Pens.Red, dynamicStartPoint.Value, dynamicEndPoint.Value);
+                    Point x1 = polygons[Int32.Parse(comboBox1.Text)].polygon_vertices[Int32.Parse(comboBox2.Text)];
+                    Point x2 = polygons[Int32.Parse(comboBox1.Text)].polygon_vertices[(Int32.Parse(comboBox2.Text) + 1) % polygons[Int32.Parse(comboBox1.Text)].polygon_vertices.Count];
+
+                    Point? intersection = GetIntersection(dynamicStartPoint.Value, dynamicEndPoint.Value, x1, x2);
+                    if (intersection.HasValue)
+                    {
+                        g.FillEllipse(Brushes.Blue, intersection.Value.X - 5, intersection.Value.Y - 5, 10, 10);
+                    }
+                }
+            }
+            pictureBox1.Image = bitmap;
         }
 
         //кнопка дл€ перемещени€ полигона 
@@ -303,7 +331,7 @@ namespace Lab4
         }
 
         //умножение матриц
-        public double[,] MatrixMultiplication(ref double[,] m1, ref double[,]m2)
+        public double[,] MatrixMultiplication(ref double[,] m1, ref double[,] m2)
         {
             int row1 = m1.GetLength(0);
             int col1 = m1.GetLength(1);
@@ -377,7 +405,7 @@ namespace Lab4
         //функци€ дл€ подсчЄта центра списка точек
         static public Point GetCenterPolygon(ref List<Point> l)
         {
-            
+
             double A = 0;  // ѕодписанна€ площадь
             double Cx = 0;
             double Cy = 0;
@@ -406,7 +434,7 @@ namespace Lab4
             Cy = (Cy) / (6 * A);
 
             return new Point((int)Math.Round(Cx), (int)Math.Round(Cy));
-            
+
         }
 
         //ћасштабирование относительно центра плоскости на коэффицента a, b
@@ -509,6 +537,78 @@ namespace Lab4
             }
 
             return getLineHigh(p0.X, p0.Y, p1.X, p1.Y);
+        }
+
+        public bool IsPointInPolygon(Point point, Polygon p)
+        {
+            int crossings = 0;
+            int n = p.polygon_vertices.Count;
+
+            for (int i = 0; i < n; i++)
+            {
+                Point p1 = p.polygon_vertices[i];
+                Point p2 = p.polygon_vertices[(i + 1) % n];
+
+                // ѕровер€ем, пересекает ли горизонтальна€ лини€, проведенна€ через точку, отрезок
+                if ((p1.Y > point.Y) != (p2.Y > point.Y))
+                {
+                    // ¬ычисл€ем x-координату пересечени€
+                    float intersectionX = (float)(p2.X - p1.X) * (point.Y - p1.Y) / (p2.Y - p1.Y) + p1.X;
+                    if (point.X < intersectionX)
+                    {
+                        crossings++;
+                    }
+                }
+            }
+
+            // ≈сли число пересечений нечЄтное, точка внутри полигона
+            return (crossings % 2) == 1;
+        }
+
+        // нопка проверки на принадлежность точки к выбранному полигону
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (state == States.AffineTransform)
+            {
+                //строка чтобы людей пугать
+                MessageBox.Show(IsPointInPolygon(pointAffineTransform, polygons[Int32.Parse(comboBox1.Text)]) ? "“очка внутри полигона" : "“очка вне полигона");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox2.Items.Clear();
+            for (int i = 0; i < polygons[Int32.Parse(comboBox1.Text)].polygon_vertices.Count; i++)
+            {
+                comboBox2.Items.Add(i);
+            }
+        }
+
+        private Point? GetIntersection(Point p1, Point p2, Point p3, Point p4)
+        {
+            float denominator = (p4.Y - p3.Y) * (p2.X - p1.X) - (p4.X - p3.X) * (p2.Y - p1.Y);
+            if (denominator == 0)
+            {
+                return null; // ѕараллельные линии
+            }
+
+            float ua = ((p4.X - p3.X) * (p1.Y - p3.Y) - (p4.Y - p3.Y) * (p1.X - p3.X)) / denominator;
+            float ub = ((p2.X - p1.X) * (p1.Y - p3.Y) - (p2.Y - p1.Y) * (p1.X - p3.X)) / denominator;
+
+            if (ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1)
+            {
+                // ¬ычисл€ем координаты точки пересечени€
+                float intersectionX = p1.X + ua * (p2.X - p1.X);
+                float intersectionY = p1.Y + ua * (p2.Y - p1.Y);
+                return new Point((int)intersectionX, (int)intersectionY);
+            }
+
+            return null; // Ќет пересечени€
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            state = States.DrawLine;
         }
     }
 }
