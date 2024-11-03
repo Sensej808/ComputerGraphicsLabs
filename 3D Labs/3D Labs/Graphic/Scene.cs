@@ -97,9 +97,9 @@ namespace _3D_Labs.Graphic
 
                 projectionMatrix = new float[4, 4]
                 {
-                { cosY, sinX * sinY, 0, 0 },
+                { cosY, -sinX * sinY, 0, 0 },
                 { 0, cosX, 0, 0 },
-                { sinY, -sinX * cosY, 0, 0 },
+                { sinY, sinX * cosY, 0, 0 },
                 { 0, 0, 0, 1 }
                 };
             }
