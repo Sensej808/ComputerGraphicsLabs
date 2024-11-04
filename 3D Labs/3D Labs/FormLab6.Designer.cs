@@ -79,7 +79,29 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.SurfaceCountY = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.SurfaceCountX = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.SurfaceX1 = new System.Windows.Forms.TextBox();
+            this.SurfaceY2 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.SurfaceX2 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.SurfaceY1 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.CameraPosText = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.CameraTargetText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -87,7 +109,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(9, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(873, 625);
+            this.pictureBox1.Size = new System.Drawing.Size(873, 740);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -519,7 +541,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1040, 29);
+            this.button5.Location = new System.Drawing.Point(1039, 29);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(160, 29);
             this.button5.TabIndex = 52;
@@ -536,11 +558,207 @@
             this.label1.TabIndex = 53;
             this.label1.Text = "Камера:";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.SurfaceCountY);
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.SurfaceCountX);
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.SurfaceX1);
+            this.groupBox1.Controls.Add(this.SurfaceY2);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.SurfaceX2);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.SurfaceY1);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Location = new System.Drawing.Point(1205, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(327, 309);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Создание поверхности";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(122, 210);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(123, 20);
+            this.label13.TabIndex = 73;
+            this.label13.Text = "Список функций";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(112, 233);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(151, 28);
+            this.comboBox2.TabIndex = 72;
+            // 
+            // SurfaceCountY
+            // 
+            this.SurfaceCountY.Location = new System.Drawing.Point(224, 156);
+            this.SurfaceCountY.Name = "SurfaceCountY";
+            this.SurfaceCountY.Size = new System.Drawing.Size(59, 27);
+            this.SurfaceCountY.TabIndex = 70;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(9, 156);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(208, 20);
+            this.label27.TabIndex = 71;
+            this.label27.Text = "Количество разбиений по Y:";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 228);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 37);
+            this.button6.TabIndex = 69;
+            this.button6.Text = "Создать";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.CreateSurface);
+            // 
+            // SurfaceCountX
+            // 
+            this.SurfaceCountX.Location = new System.Drawing.Point(224, 126);
+            this.SurfaceCountX.Name = "SurfaceCountX";
+            this.SurfaceCountX.Size = new System.Drawing.Size(59, 27);
+            this.SurfaceCountX.TabIndex = 61;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(9, 126);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(209, 20);
+            this.label26.TabIndex = 68;
+            this.label26.Text = "Количество разбиений по X:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 28);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(74, 20);
+            this.label25.TabIndex = 67;
+            this.label25.Text = "Границы:";
+            // 
+            // SurfaceX1
+            // 
+            this.SurfaceX1.Location = new System.Drawing.Point(32, 59);
+            this.SurfaceX1.Name = "SurfaceX1";
+            this.SurfaceX1.Size = new System.Drawing.Size(59, 27);
+            this.SurfaceX1.TabIndex = 58;
+            // 
+            // SurfaceY2
+            // 
+            this.SurfaceY2.Location = new System.Drawing.Point(122, 92);
+            this.SurfaceY2.Name = "SurfaceY2";
+            this.SurfaceY2.Size = new System.Drawing.Size(59, 27);
+            this.SurfaceY2.TabIndex = 65;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 66);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(24, 20);
+            this.label24.TabIndex = 55;
+            this.label24.Text = "x1";
+            // 
+            // SurfaceX2
+            // 
+            this.SurfaceX2.Location = new System.Drawing.Point(122, 59);
+            this.SurfaceX2.Name = "SurfaceX2";
+            this.SurfaceX2.Size = new System.Drawing.Size(59, 27);
+            this.SurfaceX2.TabIndex = 64;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(8, 95);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(24, 20);
+            this.label23.TabIndex = 56;
+            this.label23.Text = "y1";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(97, 95);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(24, 20);
+            this.label20.TabIndex = 62;
+            this.label20.Text = "y2";
+            // 
+            // SurfaceY1
+            // 
+            this.SurfaceY1.Location = new System.Drawing.Point(32, 92);
+            this.SurfaceY1.Name = "SurfaceY1";
+            this.SurfaceY1.Size = new System.Drawing.Size(59, 27);
+            this.SurfaceY1.TabIndex = 59;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(97, 62);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(24, 20);
+            this.label21.TabIndex = 61;
+            this.label21.Text = "x2";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(12, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(136, 20);
+            this.label22.TabIndex = 55;
+            this.label22.Text = "Позиция камеры: ";
+            // 
+            // CameraPosText
+            // 
+            this.CameraPosText.AutoSize = true;
+            this.CameraPosText.Location = new System.Drawing.Point(15, 45);
+            this.CameraPosText.Name = "CameraPosText";
+            this.CameraPosText.Size = new System.Drawing.Size(0, 20);
+            this.CameraPosText.TabIndex = 56;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(12, 70);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(165, 20);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "Направление камеры:";
+            // 
+            // CameraTargetText
+            // 
+            this.CameraTargetText.AutoSize = true;
+            this.CameraTargetText.Location = new System.Drawing.Point(15, 95);
+            this.CameraTargetText.Name = "CameraTargetText";
+            this.CameraTargetText.Size = new System.Drawing.Size(0, 20);
+            this.CameraTargetText.TabIndex = 58;
+            // 
             // FormLab6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 647);
+            this.ClientSize = new System.Drawing.Size(1549, 764);
+            this.Controls.Add(this.CameraTargetText);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.CameraPosText);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -595,6 +813,8 @@
             this.Name = "FormLab6";
             this.Text = "Lab6";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -653,5 +873,26 @@
         private Button button4;
         private Button button5;
         private Label label1;
+        private GroupBox groupBox1;
+        private Label label25;
+        private TextBox SurfaceX1;
+        private TextBox SurfaceY2;
+        private Label label24;
+        private TextBox SurfaceX2;
+        private Label label23;
+        private Label label20;
+        private TextBox SurfaceY1;
+        private Label label21;
+        private Label label26;
+        private Button button6;
+        private TextBox SurfaceCountX;
+        private TextBox SurfaceCountY;
+        private Label label27;
+        private Label label13;
+        private ComboBox comboBox2;
+        private Label label22;
+        private Label CameraPosText;
+        private Label label28;
+        private Label CameraTargetText;
     }
 }
