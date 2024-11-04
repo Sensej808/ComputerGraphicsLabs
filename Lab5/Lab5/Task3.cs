@@ -1,42 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab5
 {
     public partial class Task3 : Form
     {
-        class ControlPoint
-        {
-            public PointF coord;
-            public bool is_fictive;
-
-            public ControlPoint(PointF coord, bool is_fictive)
-            {
-                this.coord = coord;
-                this.is_fictive = is_fictive;
-            }
-
-        }
-        private List<ControlPoint> points;
-
-        private List<PointF> controlPoints = new List<PointF>();
         private const float PointSize = 8f;
+        private List<PointF> controlPoints = new List<PointF>();
         private int selectedPointIndex = -1;
-        bool is_move = false;
+        private bool is_move = false;
+
         public Task3()
         {
             this.DoubleBuffered = true;
             this.Width = 800;
             this.Height = 600;
-
-            points = new List<ControlPoint>();
 
             this.MouseDown += OnMouseDown;
             this.MouseMove += OnMouseMove;
@@ -48,6 +28,7 @@ namespace Lab5
         {
             if (e.Button == MouseButtons.Left)
             {
+                // Проверяем, находится ли курсор над опорной точкой
                 for (int i = 0; i < controlPoints.Count; i++)
                 {
                     if (IsPointClose(controlPoints[i], e.Location))
@@ -57,16 +38,23 @@ namespace Lab5
                         return;
                     }
                 }
-                points.Add(new ControlPoint(e.Location, false));
-                
-                    
-                    
+
+                // Если точка не найдена, добавляем новую точку
                 controlPoints.Add(e.Location);
-                
                 Invalidate();
             }
             else if (e.Button == MouseButtons.Right)
             {
+                // Проверяем, находится ли курсор над опорной точкой для удаления
+                for (int i = 0; i < controlPoints.Count; i++)
+                {
+                    if (IsPointClose(controlPoints[i], e.Location))
+                    {
+                        controlPoints.RemoveAt(i);
+                        Invalidate();
+                        return;
+                    }
+                }
                 selectedPointIndex = -1;
                 Invalidate();
             }
@@ -74,9 +62,9 @@ namespace Lab5
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (selectedPointIndex >= 0 && is_move && !points[selectedPointIndex].is_fictive)
+            if (selectedPointIndex >= 0 && is_move)
             {
-                points[selectedPointIndex].coord = e.Location;
+                controlPoints[selectedPointIndex] = e.Location;
                 Invalidate();
             }
         }
@@ -91,34 +79,53 @@ namespace Lab5
             return Math.Abs(point.X - mousePos.X) < PointSize && Math.Abs(point.Y - mousePos.Y) < PointSize;
         }
 
-        private void AddFictive(int begin_ind)
-        {
-            points.Insert(begin_ind+1, new ControlPoint(new PointF((points[begin_ind].coord.X + points[begin_ind+1].coord.X) / 2, (points[begin_ind].coord.Y + points[begin_ind + 1].coord.Y) / 2), true));
-        }
-
         private void OnPaint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
 
             // Рисуем кривую Безье
-            for (int i = 0; i < controlPoints.Count - 3; i++)
+            for (int i = 1; i < controlPoints.Count - 1; i += 2)
             {
-                DrawBezierCurve(g, points[i].coord, points[i + 1].coord, points[i + 2].coord, points[i + 3].coord);
+                PointF p0, p1, p2, p3;
+
+                int prev = i - 1; // p0
+                int next2 = i + 2; // p3 
+
+                if (prev == 0)
+                    p0 = controlPoints[prev];
+                else
+                    p0 = new PointF((controlPoints[i].X + controlPoints[prev].X) / 2, (controlPoints[i].Y + controlPoints[prev].Y) / 2);
+
+                if (i == controlPoints.Count - 2)
+                {
+                    p1 = controlPoints[i];
+                    p3 = controlPoints[i + 1];
+                    p2 = new PointF((p3.X + p1.X) / 2, (p3.Y + p1.Y) / 2);
+                }
+                else
+                {
+                    p1 = controlPoints[i];
+                    p2 = controlPoints[i + 1];
+                    if (next2 == controlPoints.Count - 1)
+                        p3 = controlPoints[next2];
+                    else
+                        p3 = new PointF((controlPoints[next2].X + p2.X) / 2, (controlPoints[next2].Y + p2.Y) / 2);
+                }
+
+                DrawBezierCurve(g, p0, p1, p2, p3);
             }
 
             // Рисуем опорные точки
             Brush color;
-            foreach (var point in points)
+            foreach (var point in controlPoints)
             {
-                color = point.is_fictive ? Brushes.Violet : Brushes.Red;
-                g.FillEllipse(color, point.coord.X - PointSize / 2, point.coord.Y - PointSize / 2, PointSize, PointSize);
+                color = Brushes.Red;
+                g.FillEllipse(color, point.X - PointSize / 2, point.Y - PointSize / 2, PointSize, PointSize);
             }
         }
 
         private void DrawBezierCurve(Graphics g, PointF p0, PointF p1, PointF p2, PointF p3)
         {
-
-
             var points = new List<PointF>();
             for (float t = 0; t <= 1; t += 0.01f)
             {
@@ -135,6 +142,5 @@ namespace Lab5
 
             g.DrawLines(Pens.Blue, points.ToArray());
         }
-
     }
 }
