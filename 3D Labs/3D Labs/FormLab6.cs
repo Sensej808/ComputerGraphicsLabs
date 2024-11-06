@@ -41,10 +41,18 @@ namespace _3D_Labs
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             this.scene = new Scene();
 
-            Polyhedron tetrahedron = SimplePolyhedrons.Tetrahedron(200);
+            Polyhedron octahedron = SimplePolyhedrons.Octahedron(100);
+            AffineTransform.Offset(octahedron.points, -600, 0, 1500);
+            scene.polyhedrons.Add(octahedron);
 
-            AffineTransform.Offset(tetrahedron.points, 0, 0, 1500);
+            Polyhedron tetrahedron = SimplePolyhedrons.Tetrahedron(200);
+            AffineTransform.Offset(tetrahedron.points, -300, 0, 1500);
             scene.polyhedrons.Add(tetrahedron);
+
+            Polyhedron cube = SimplePolyhedrons.Cube(200);
+            AffineTransform.Offset(cube.points, 0, 0, 1500);
+            scene.polyhedrons.Add(cube);
+
 
             for (int i = 0; i < scene.polyhedrons.Count; i++)
             {
