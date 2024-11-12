@@ -8,25 +8,25 @@ namespace Lab4
     public partial class MainScreen : Form
     {
         /* 
-         каждый раз перерисовываю все полигоны, ибо если  этого не делать, то будет стираться часть точек при стирании точек, при афинных преобразованиях
+         ГЄГ Г¦Г¤Г»Г© Г°Г Г§ ГЇГҐГ°ГҐГ°ГЁГ±Г®ГўГ»ГўГ Гѕ ГўГ±ГҐ ГЇГ®Г«ГЁГЈГ®Г­Г», ГЁГЎГ® ГҐГ±Г«ГЁ  ГЅГІГ®ГЈГ® Г­ГҐ Г¤ГҐГ«Г ГІГј, ГІГ® ГЎГіГ¤ГҐГІ Г±ГІГЁГ°Г ГІГјГ±Гї Г·Г Г±ГІГј ГІГ®Г·ГҐГЄ ГЇГ°ГЁ Г±ГІГЁГ°Г Г­ГЁГЁ ГІГ®Г·ГҐГЄ, ГЇГ°ГЁ Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГїГµ
         */
 
-        List<Point> start_polygon_points; //список для точек из которых будет создан полигон
-        Point pointAffineTransform; //точка относительно которой будут делаться афинные преобразования
-        List<Polygon> polygons; //список полигонов
-        static Bitmap bitmap; //карта пикселей
+        List<Point> start_polygon_points; //Г±ГЇГЁГ±Г®ГЄ Г¤Г«Гї ГІГ®Г·ГҐГЄ ГЁГ§ ГЄГ®ГІГ®Г°Г»Гµ ГЎГіГ¤ГҐГІ Г±Г®Г§Г¤Г Г­ ГЇГ®Г«ГЁГЈГ®Г­
+        Point pointAffineTransform; //ГІГ®Г·ГЄГ  Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® ГЄГ®ГІГ®Г°Г®Г© ГЎГіГ¤ГіГІ Г¤ГҐГ«Г ГІГјГ±Гї Г ГґГЁГ­Г­Г»ГҐ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГї
+        List<Polygon> polygons; //Г±ГЇГЁГ±Г®ГЄ ГЇГ®Г«ГЁГЈГ®Г­Г®Гў
+        static Bitmap bitmap; //ГЄГ Г°ГІГ  ГЇГЁГЄГ±ГҐГ«ГҐГ©
         States state = States.None;
-        //состояния для нажатия мышки по экрану
+        //Г±Г®Г±ГІГ®ГїГ­ГЁГї Г¤Г«Гї Г­Г Г¦Г ГІГЁГї Г¬Г»ГёГЄГЁ ГЇГ® ГЅГЄГ°Г Г­Гі
 
-        //Точки начала и конца отрезка(для пересечения отрезков)
+        //Г’Г®Г·ГЄГЁ Г­Г Г·Г Г«Г  ГЁ ГЄГ®Г­Г¶Г  Г®ГІГ°ГҐГ§ГЄГ (Г¤Г«Гї ГЇГҐГ°ГҐГ±ГҐГ·ГҐГ­ГЁГї Г®ГІГ°ГҐГ§ГЄГ®Гў)
         private Point? dynamicStartPoint;
         private Point? dynamicEndPoint;
         enum States
         {
             None,
             DrawLine,
-            CreatePolygon, //точки кладутся в список для создания полигонов
-            AffineTransform //относительно этой точки будут делаться некоторые афинные преобразования
+            CreatePolygon, //ГІГ®Г·ГЄГЁ ГЄГ«Г Г¤ГіГІГ±Гї Гў Г±ГЇГЁГ±Г®ГЄ Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї ГЇГ®Г«ГЁГЈГ®Г­Г®Гў
+            AffineTransform //Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® ГЅГІГ®Г© ГІГ®Г·ГЄГЁ ГЎГіГ¤ГіГІ Г¤ГҐГ«Г ГІГјГ±Гї Г­ГҐГЄГ®ГІГ®Г°Г»ГҐ Г ГґГЁГ­Г­Г»ГҐ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГї
         }
         public MainScreen()
         {
@@ -36,24 +36,24 @@ namespace Lab4
             polygons = new List<Polygon>();
             pointAffineTransform = new Point(0, 0);
         }
-        //переходим в состояние для создания полигона
+        //ГЇГҐГ°ГҐГµГ®Г¤ГЁГ¬ Гў Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї ГЇГ®Г«ГЁГЈГ®Г­Г 
         public void button1_Click(object sender, EventArgs e)
         {
             start_polygon_points.Clear();
             state = States.CreatePolygon;
         }
 
-        //рисуем полигон из полученных точек
+        //Г°ГЁГ±ГіГҐГ¬ ГЇГ®Г«ГЁГЈГ®Г­ ГЁГ§ ГЇГ®Г«ГіГ·ГҐГ­Г­Г»Гµ ГІГ®Г·ГҐГЄ
         public void button2_Click(object sender, EventArgs e)
         {
             Graphics g = Graphics.FromImage(bitmap);
-            //убираем точки для создания полигона с экрана
+            //ГіГЎГЁГ°Г ГҐГ¬ ГІГ®Г·ГЄГЁ Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї ГЇГ®Г«ГЁГЈГ®Г­Г  Г± ГЅГЄГ°Г Г­Г 
             for (int i = 0; i < start_polygon_points.Count; i++)
             {
                 g.FillEllipse(new SolidBrush(pictureBox1.BackColor), start_polygon_points[i].X - 5, start_polygon_points[i].Y - 5, 5 * 2, 5 * 2);
 
             }
-            //убираем точку для афинных преобразований
+            //ГіГЎГЁГ°Г ГҐГ¬ ГІГ®Г·ГЄГі Г¤Г«Гї Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГ©
             //g.FillEllipse(new SolidBrush(pictureBox1.BackColor), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
             pictureBox1.Image = bitmap;
             Polygon new_polygon = new Polygon(start_polygon_points, GetPolygonPoints(ref start_polygon_points));
@@ -66,31 +66,31 @@ namespace Lab4
             state = States.None;
 
         }
-        //очищаем экран
+        //Г®Г·ГЁГ№Г ГҐГ¬ ГЅГЄГ°Г Г­
         public void button3_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = null;
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            //очищаем все списки
+            //Г®Г·ГЁГ№Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГЁГ±ГЄГЁ
             polygons.Clear();
             comboBox1.Items.Clear();
             state = States.None;
         }
 
-        //функция которая работает при нажатии мыги
+        //ГґГіГ­ГЄГ¶ГЁГї ГЄГ®ГІГ®Г°Г Гї Г°Г ГЎГ®ГІГ ГҐГІ ГЇГ°ГЁ Г­Г Г¦Г ГІГЁГЁ Г¬Г»ГЈГЁ
         public void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             Graphics g = Graphics.FromImage(bitmap);
-            //если состояние создания полигона то кладём точки сюда
+            //ГҐГ±Г«ГЁ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г±Г®Г§Г¤Г Г­ГЁГї ГЇГ®Г«ГЁГЈГ®Г­Г  ГІГ® ГЄГ«Г Г¤ВёГ¬ ГІГ®Г·ГЄГЁ Г±ГѕГ¤Г 
             if (state == States.CreatePolygon)
             {
                 start_polygon_points.Add(new Point(e.X, e.Y));
                 g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
             }
-            //если состояние для выбора точки для афинных преобразований то кладём точку сюда
+            //ГҐГ±Г«ГЁ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г¤Г«Гї ГўГ»ГЎГ®Г°Г  ГІГ®Г·ГЄГЁ Г¤Г«Гї Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГ© ГІГ® ГЄГ«Г Г¤ВёГ¬ ГІГ®Г·ГЄГі Г±ГѕГ¤Г 
             else if (state == States.AffineTransform)
             {
-                //стираем предыдущую точку афинных преобразований
+                //Г±ГІГЁГ°Г ГҐГ¬ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГіГѕ ГІГ®Г·ГЄГі Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГ©
                 g.FillEllipse(new SolidBrush(pictureBox1.BackColor), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
                 pointAffineTransform = new Point(e.X, e.Y);
                 g.FillEllipse(new SolidBrush(Color.Green), e.X - 5, e.Y - 5, 5 * 2, 5 * 2);
@@ -100,11 +100,11 @@ namespace Lab4
             {
                 if (!dynamicStartPoint.HasValue)
                 {
-                    dynamicStartPoint = e.Location; // Устанавливаем первую точку
+                    dynamicStartPoint = e.Location; // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГЇГҐГ°ГўГіГѕ ГІГ®Г·ГЄГі
                 }
                 else
                 {
-                    dynamicEndPoint = e.Location; // Устанавливаем вторую точку
+                    dynamicEndPoint = e.Location; // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГўГІГ®Г°ГіГѕ ГІГ®Г·ГЄГі
                 }
                 if (dynamicStartPoint.HasValue && dynamicEndPoint.HasValue)
                 {
@@ -122,151 +122,151 @@ namespace Lab4
             pictureBox1.Image = bitmap;
         }
 
-        //кнопка для перемещения полигона 
+        //ГЄГ­Г®ГЇГЄГ  Г¤Г«Гї ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГї ГЇГ®Г«ГЁГЈГ®Г­Г  
         public void button4_Click(object sender, EventArgs e)
         {
-            //получаем нужные данные
+            //ГЇГ®Г«ГіГ·Г ГҐГ¬ Г­ГіГ¦Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
             label1.Text = textBox1.Text + " " + textBox2.Text + " " + comboBox1.Text;
             int index = int.Parse(comboBox1.Text);
             int dx = int.Parse(textBox1.Text);
             int dy = int.Parse(textBox2.Text);
 
-            //убираем нарисованный полигон
+            //ГіГЎГЁГ°Г ГҐГ¬ Г­Г Г°ГЁГ±Г®ГўГ Г­Г­Г»Г© ГЇГ®Г«ГЁГЈГ®Г­
             DrawList(ref polygons[index].polygon_points, ref bitmap, pictureBox1.BackColor);
             pictureBox1.Image = bitmap;
 
-            //делаем сдвиг
+            //Г¤ГҐГ«Г ГҐГ¬ Г±Г¤ГўГЁГЈ
             OffsetDxDy(ref polygons[index].polygon_vertices, dx, dy);
 
-            //меняем остальные точки
+            //Г¬ГҐГ­ГїГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ ГІГ®Г·ГЄГЁ
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
 
-            //рисуем все полигоны
+            //Г°ГЁГ±ГіГҐГ¬ ГўГ±ГҐ ГЇГ®Г«ГЁГЈГ®Г­Г»
             //DrawList(ref polygons[index].polygon_points, ref bitmap, Color.Black);
             DrawAll(ref bitmap, Color.Black);
             pictureBox1.Image = bitmap;
 
         }
-        //кнопка для поворота полигона 
+        //ГЄГ­Г®ГЇГЄГ  Г¤Г«Гї ГЇГ®ГўГ®Г°Г®ГІГ  ГЇГ®Г«ГЁГЈГ®Г­Г  
         private void button5_Click(object sender, EventArgs e)
         {
-            //получаем нужные данные
+            //ГЇГ®Г«ГіГ·Г ГҐГ¬ Г­ГіГ¦Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
             int index = int.Parse(comboBox1.Text);
             double fi = double.Parse(textBox3.Text);
 
-            //убираем нарисованный полигон
+            //ГіГЎГЁГ°Г ГҐГ¬ Г­Г Г°ГЁГ±Г®ГўГ Г­Г­Г»Г© ГЇГ®Г«ГЁГЈГ®Г­
             DrawList(ref polygons[index].polygon_points, ref bitmap, pictureBox1.BackColor);
             pictureBox1.Image = bitmap;
 
-            //делаем поворот
+            //Г¤ГҐГ«Г ГҐГ¬ ГЇГ®ГўГ®Г°Г®ГІ
             RotationAroundPointFi(ref polygons[index].polygon_vertices, fi, pointAffineTransform.X, pointAffineTransform.Y);
             Graphics g = Graphics.FromImage(bitmap);
             g.FillEllipse(new SolidBrush(Color.Green), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
             pictureBox1.Image = bitmap;
 
-            //меняем остальные точки
+            //Г¬ГҐГ­ГїГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ ГІГ®Г·ГЄГЁ
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
 
-            //рисуем новый полигон
+            //Г°ГЁГ±ГіГҐГ¬ Г­Г®ГўГ»Г© ГЇГ®Г«ГЁГЈГ®Г­
             //DrawList(ref polygons[index].polygon_points, ref bitmap, Color.Black);
             DrawAll(ref bitmap, Color.Black);
             pictureBox1.Image = bitmap;
         }
 
-        //устанавлиаем состояние для установки точки для афинных преобразований
+        //ГіГ±ГІГ Г­Г ГўГ«ГЁГ ГҐГ¬ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ Г¤Г«Гї ГіГ±ГІГ Г­Г®ГўГЄГЁ ГІГ®Г·ГЄГЁ Г¤Г«Гї Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГ©
         private void button6_Click(object sender, EventArgs e)
         {
             state = States.AffineTransform;
         }
 
-        //кнопка для поворота полигона относительно центра
+        //ГЄГ­Г®ГЇГЄГ  Г¤Г«Гї ГЇГ®ГўГ®Г°Г®ГІГ  ГЇГ®Г«ГЁГЈГ®Г­Г  Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® Г¶ГҐГ­ГІГ°Г 
         private void button7_Click(object sender, EventArgs e)
         {
-            //получаем нужные данные
+            //ГЇГ®Г«ГіГ·Г ГҐГ¬ Г­ГіГ¦Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
             int index = int.Parse(comboBox1.Text);
             double fi = double.Parse(textBox3.Text);
 
-            //убираем нарисованный полигон
+            //ГіГЎГЁГ°Г ГҐГ¬ Г­Г Г°ГЁГ±Г®ГўГ Г­Г­Г»Г© ГЇГ®Г«ГЁГЈГ®Г­
             DrawList(ref polygons[index].polygon_points, ref bitmap, pictureBox1.BackColor);
             pictureBox1.Image = bitmap;
 
-            //делаем поворот
+            //Г¤ГҐГ«Г ГҐГ¬ ГЇГ®ГўГ®Г°Г®ГІ
             Point center = GetCenterPolygon(ref polygons[index].polygon_vertices);
             RotationAroundPointFi(ref polygons[index].polygon_vertices, fi, center.X, center.Y);
 
-            //меняем остальные точки
+            //Г¬ГҐГ­ГїГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ ГІГ®Г·ГЄГЁ
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
 
-            //рисуем новый полигон
+            //Г°ГЁГ±ГіГҐГ¬ Г­Г®ГўГ»Г© ГЇГ®Г«ГЁГЈГ®Г­
             //DrawList(ref polygons[index].polygon_points, ref bitmap, Color.Black);
             DrawAll(ref bitmap, Color.Black);
             pictureBox1.Image = bitmap;
         }
 
-        //кнопка для масштабирования полигона относительно точки
+        //ГЄГ­Г®ГЇГЄГ  Г¤Г«Гї Г¬Г Г±ГёГІГ ГЎГЁГ°Г®ГўГ Г­ГЁГї ГЇГ®Г«ГЁГЈГ®Г­Г  Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® ГІГ®Г·ГЄГЁ
         private void button8_Click(object sender, EventArgs e)
         {
-            //получаем нужные данные
+            //ГЇГ®Г«ГіГ·Г ГҐГ¬ Г­ГіГ¦Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
             int index = int.Parse(comboBox1.Text);
             double a = double.Parse(textBox4.Text);
             double b = double.Parse(textBox5.Text);
 
-            //убираем нарисованный полигон
+            //ГіГЎГЁГ°Г ГҐГ¬ Г­Г Г°ГЁГ±Г®ГўГ Г­Г­Г»Г© ГЇГ®Г«ГЁГЈГ®Г­
             DrawList(ref polygons[index].polygon_points, ref bitmap, pictureBox1.BackColor);
             pictureBox1.Image = bitmap;
 
-            //масштабируем
+            //Г¬Г Г±ГёГІГ ГЎГЁГ°ГіГҐГ¬
             ScallingRelativePoint(ref polygons[index].polygon_vertices, a, b, pointAffineTransform.X, pointAffineTransform.Y);
             Graphics g = Graphics.FromImage(bitmap);
             g.FillEllipse(new SolidBrush(Color.Green), pointAffineTransform.X - 5, pointAffineTransform.Y - 5, 5 * 2, 5 * 2);
             pictureBox1.Image = bitmap;
 
-            //меняем остальные точки
+            //Г¬ГҐГ­ГїГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ ГІГ®Г·ГЄГЁ
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
 
-            //рисуем новый полигон
+            //Г°ГЁГ±ГіГҐГ¬ Г­Г®ГўГ»Г© ГЇГ®Г«ГЁГЈГ®Г­
             //DrawList(ref polygons[index].polygon_points, ref bitmap, Color.Black);
             DrawAll(ref bitmap, Color.Black);
             pictureBox1.Image = bitmap;
         }
 
-        //масштабирование относительно центра
+        //Г¬Г Г±ГёГІГ ГЎГЁГ°Г®ГўГ Г­ГЁГҐ Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® Г¶ГҐГ­ГІГ°Г 
         private void button9_Click(object sender, EventArgs e)
         {
-            //получаем нужные данные
+            //ГЇГ®Г«ГіГ·Г ГҐГ¬ Г­ГіГ¦Г­Г»ГҐ Г¤Г Г­Г­Г»ГҐ
             int index = int.Parse(comboBox1.Text);
             double a = double.Parse(textBox4.Text);
             double b = double.Parse(textBox5.Text);
 
-            //убираем нарисованный полигон
+            //ГіГЎГЁГ°Г ГҐГ¬ Г­Г Г°ГЁГ±Г®ГўГ Г­Г­Г»Г© ГЇГ®Г«ГЁГЈГ®Г­
             DrawList(ref polygons[index].polygon_points, ref bitmap, pictureBox1.BackColor);
             pictureBox1.Image = bitmap;
 
-            //масштабируем
+            //Г¬Г Г±ГёГІГ ГЎГЁГ°ГіГҐГ¬
             Point center = GetCenterPolygon(ref polygons[index].polygon_vertices);
             ScallingRelativePoint(ref polygons[index].polygon_vertices, a, b, center.X, center.Y);
             //ScallingRelativeCenter(ref polygons[index].polygon_vertices, a, b);
 
-            //меняем остальные точки
+            //Г¬ГҐГ­ГїГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ ГІГ®Г·ГЄГЁ
             polygons[index].polygon_points = GetPolygonPoints(ref polygons[index].polygon_vertices);
 
-            //рисуем новый полигон
+            //Г°ГЁГ±ГіГҐГ¬ Г­Г®ГўГ»Г© ГЇГ®Г«ГЁГЈГ®Г­
             //DrawList(ref polygons[index].polygon_points, ref bitmap, Color.Black);
             DrawAll(ref bitmap, Color.Black);
             pictureBox1.Image = bitmap;
         }
 
 
-        //функции для отрисовки которые работают с уже вычисленными значениями
+        //ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГЄГ®ГІГ®Г°Г»ГҐ Г°Г ГЎГ®ГІГ ГѕГІ Г± ГіГ¦ГҐ ГўГ»Г·ГЁГ±Г«ГҐГ­Г­Г»Г¬ГЁ Г§Г­Г Г·ГҐГ­ГЁГїГ¬ГЁ
 
-        //функция для отрисовки списка точек
+        //ГґГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г®ГІГ°ГЁГ±Г®ГўГЄГЁ Г±ГЇГЁГ±ГЄГ  ГІГ®Г·ГҐГЄ
         public static void DrawList(ref List<Point> l, ref Bitmap pixelMap, Color draw_color)
         {
             for (int i = 0; i < l.Count; i++)
             {
                 pixelMap.SetPixel(l[i].X, l[i].Y, draw_color);
             }
-            //рисуем центр
+            //Г°ГЁГ±ГіГҐГ¬ Г¶ГҐГ­ГІГ°
             //Graphics g = Graphics.FromImage(pixelMap);
             //g.FillEllipse(new SolidBrush(Color.Green), l[l.Count - 1].X - 5, l[l.Count - 1].Y - 5, 5 * 2, 5 * 2);
         }
@@ -281,16 +281,16 @@ namespace Lab4
                     pixelMap.SetPixel(this.polygons[i].polygon_points[j].X, this.polygons[i].polygon_points[j].Y, draw_color);
                 }
                 //label1.Text = $"{this.polygons.Count}";
-                //рисуем центр
+                //Г°ГЁГ±ГіГҐГ¬ Г¶ГҐГ­ГІГ°
                 //Graphics g = Graphics.FromImage(pixelMap);
                 //g.FillEllipse(new SolidBrush(Color.Green), this.polygons[i].polygon_points[this.polygons[i].polygon_points.Count - 1].X - 5, this.polygons[i].polygon_points[this.polygons[i].polygon_points.Count - 1].Y - 5, 5 * 2, 5 * 2);
             }
         }
 
-        //Вычислительные функции не связанные с отрисовкой
+        //Г‚Г»Г·ГЁГ±Г«ГЁГІГҐГ«ГјГ­Г»ГҐ ГґГіГ­ГЄГ¶ГЁГЁ Г­ГҐ Г±ГўГїГ§Г Г­Г­Г»ГҐ Г± Г®ГІГ°ГЁГ±Г®ГўГЄГ®Г©
 
-        //класс полигона который хранит вершины и все точкиb
-        //возможно всю логику стоит занести в него но хз, пока она разбита по функциям
+        //ГЄГ«Г Г±Г± ГЇГ®Г«ГЁГЈГ®Г­Г  ГЄГ®ГІГ®Г°Г»Г© ГµГ°Г Г­ГЁГІ ГўГҐГ°ГёГЁГ­Г» ГЁ ГўГ±ГҐ ГІГ®Г·ГЄГЁb
+        //ГўГ®Г§Г¬Г®Г¦Г­Г® ГўГ±Гѕ Г«Г®ГЈГЁГЄГі Г±ГІГ®ГЁГІ Г§Г Г­ГҐГ±ГІГЁ Гў Г­ГҐГЈГ® Г­Г® ГµГ§, ГЇГ®ГЄГ  Г®Г­Г  Г°Г Г§ГЎГЁГІГ  ГЇГ® ГґГіГ­ГЄГ¶ГЁГїГ¬
         public class Polygon
         {
             public List<Point> polygon_vertices;
@@ -303,7 +303,7 @@ namespace Lab4
             }
         }
 
-        //функция которая возвращает список точек полигона по заданному списку вершин
+        //ГґГіГ­ГЄГ¶ГЁГї ГЄГ®ГІГ®Г°Г Гї ГўГ®Г§ГўГ°Г Г№Г ГҐГІ Г±ГЇГЁГ±Г®ГЄ ГІГ®Г·ГҐГЄ ГЇГ®Г«ГЁГЈГ®Г­Г  ГЇГ® Г§Г Г¤Г Г­Г­Г®Г¬Гі Г±ГЇГЁГ±ГЄГі ГўГҐГ°ГёГЁГ­
         public List<Point> GetPolygonPoints(ref List<Point> verices)
         {
             List<Point> polygonPoints = new List<Point>();
@@ -330,7 +330,7 @@ namespace Lab4
             return polygonPoints;
         }
 
-        //умножение матриц
+        //ГіГ¬Г­Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶
         public double[,] MatrixMultiplication(ref double[,] m1, ref double[,] m2)
         {
             int row1 = m1.GetLength(0);
@@ -353,7 +353,7 @@ namespace Lab4
             return res;
         }
 
-        //функция для афинных преобразований точки на плоскости
+        //ГґГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГ© ГІГ®Г·ГЄГЁ Г­Г  ГЇГ«Г®Г±ГЄГ®Г±ГІГЁ
         public Point AffineTransformation(Point p, ref double[,] TransMatrix)
         {
             double[,] matrix_p = new double[1, 3] { { p.X, p.Y, 1 } };
@@ -362,7 +362,7 @@ namespace Lab4
             return res;
         }
 
-        //функция для  афинных преобразования списка точек на плоскости
+        //ГґГіГ­ГЄГ¶ГЁГї Г¤Г«Гї  Г ГґГЁГ­Г­Г»Гµ ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГї Г±ГЇГЁГ±ГЄГ  ГІГ®Г·ГҐГЄ Г­Г  ГЇГ«Г®Г±ГЄГ®Г±ГІГЁ
         public void AffineTransformationList(ref List<Point> l, ref double[,] TransMatrix)
         {
             for (int i = 0; i < l.Count; i++)
@@ -371,7 +371,7 @@ namespace Lab4
             }
         }
 
-        //Сдвиг списка точек плоскости на dx и dy
+        //Г‘Г¤ГўГЁГЈ Г±ГЇГЁГ±ГЄГ  ГІГ®Г·ГҐГЄ ГЇГ«Г®Г±ГЄГ®Г±ГІГЁ Г­Г  dx ГЁ dy
         public void OffsetDxDy(ref List<Point> l, double dx, double dy)
         {
             double[,] transMatrix = new double[3, 3] {
@@ -382,7 +382,7 @@ namespace Lab4
             AffineTransformationList(ref l, ref transMatrix);
         }
 
-        //Поворот вокруг центра плоскости на угол fi
+        //ГЏГ®ГўГ®Г°Г®ГІ ГўГ®ГЄГ°ГіГЈ Г¶ГҐГ­ГІГ°Г  ГЇГ«Г®Г±ГЄГ®Г±ГІГЁ Г­Г  ГіГЈГ®Г« fi
         public void RotationAroundCenterFi(ref List<Point> l, double fi)
         {
             fi = fi * Math.PI / 180;
@@ -394,7 +394,7 @@ namespace Lab4
             AffineTransformationList(ref l, ref transMatrix);
         }
 
-        //Поворот вокруг точки на угол fi
+        //ГЏГ®ГўГ®Г°Г®ГІ ГўГ®ГЄГ°ГіГЈ ГІГ®Г·ГЄГЁ Г­Г  ГіГЈГ®Г« fi
         public void RotationAroundPointFi(ref List<Point> l, double fi, double x, double y)
         {
             OffsetDxDy(ref l, -x, -y);
@@ -402,20 +402,20 @@ namespace Lab4
             OffsetDxDy(ref l, x, y);
         }
 
-        //функция для подсчёта центра списка точек
+        //ГґГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГЇГ®Г¤Г±Г·ВёГІГ  Г¶ГҐГ­ГІГ°Г  Г±ГЇГЁГ±ГЄГ  ГІГ®Г·ГҐГЄ
         static public Point GetCenterPolygon(ref List<Point> l)
         {
 
-            double A = 0;  // Подписанная площадь
+            double A = 0;  // ГЏГ®Г¤ГЇГЁГ±Г Г­Г­Г Гї ГЇГ«Г®Г№Г Г¤Гј
             double Cx = 0;
             double Cy = 0;
 
             int n = l.Count;
 
-            // Формула для площади и центроида
+            // Г”Г®Г°Г¬ГіГ«Г  Г¤Г«Гї ГЇГ«Г®Г№Г Г¤ГЁ ГЁ Г¶ГҐГ­ГІГ°Г®ГЁГ¤Г 
             for (int i = 0; i < n; i++)
             {
-                int j = (i + 1) % n; // Следующий индекс (замкнутый полигон)
+                int j = (i + 1) % n; // Г‘Г«ГҐГ¤ГіГѕГ№ГЁГ© ГЁГ­Г¤ГҐГЄГ± (Г§Г Г¬ГЄГ­ГіГІГ»Г© ГЇГ®Г«ГЁГЈГ®Г­)
 
                 double xi = l[i].X;
                 double yi = l[i].Y;
@@ -437,7 +437,7 @@ namespace Lab4
 
         }
 
-        //Масштабирование относительно центра плоскости на коэффицента a, b
+        //ГЊГ Г±ГёГІГ ГЎГЁГ°Г®ГўГ Г­ГЁГҐ Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® Г¶ГҐГ­ГІГ°Г  ГЇГ«Г®Г±ГЄГ®Г±ГІГЁ Г­Г  ГЄГ®ГЅГґГґГЁГ¶ГҐГ­ГІГ  a, b
         public void ScallingRelativeCenter(ref List<Point> l, double a, double b)
         {
             double[,] transMatrix = new double[3, 3] {
@@ -448,7 +448,7 @@ namespace Lab4
             AffineTransformationList(ref l, ref transMatrix);
         }
 
-        //Масштабирование относительно точки на коэффиценты a, b
+        //ГЊГ Г±ГёГІГ ГЎГЁГ°Г®ГўГ Г­ГЁГҐ Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® ГІГ®Г·ГЄГЁ Г­Г  ГЄГ®ГЅГґГґГЁГ¶ГҐГ­ГІГ» a, b
         public void ScallingRelativePoint(ref List<Point> l, double a, double b, double x, double y)
         {
             OffsetDxDy(ref l, -x, -y);
@@ -549,10 +549,10 @@ namespace Lab4
                 Point p1 = p.polygon_vertices[i];
                 Point p2 = p.polygon_vertices[(i + 1) % n];
 
-                // Проверяем, пересекает ли горизонтальная линия, проведенная через точку, отрезок
+                // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, ГЇГҐГ°ГҐГ±ГҐГЄГ ГҐГІ Г«ГЁ ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г Гї Г«ГЁГ­ГЁГї, ГЇГ°Г®ГўГҐГ¤ГҐГ­Г­Г Гї Г·ГҐГ°ГҐГ§ ГІГ®Г·ГЄГі, Г®ГІГ°ГҐГ§Г®ГЄ
                 if ((p1.Y > point.Y) != (p2.Y > point.Y))
                 {
-                    // Вычисляем x-координату пересечения
+                    // Г‚Г»Г·ГЁГ±Г«ГїГҐГ¬ x-ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГҐГ°ГҐГ±ГҐГ·ГҐГ­ГЁГї
                     float intersectionX = (float)(p2.X - p1.X) * (point.Y - p1.Y) / (p2.Y - p1.Y) + p1.X;
                     if (point.X < intersectionX)
                     {
@@ -561,17 +561,17 @@ namespace Lab4
                 }
             }
 
-            // Если число пересечений нечётное, точка внутри полигона
+            // Г…Г±Г«ГЁ Г·ГЁГ±Г«Г® ГЇГҐГ°ГҐГ±ГҐГ·ГҐГ­ГЁГ© Г­ГҐГ·ВёГІГ­Г®ГҐ, ГІГ®Г·ГЄГ  ГўГ­ГіГІГ°ГЁ ГЇГ®Г«ГЁГЈГ®Г­Г 
             return (crossings % 2) == 1;
         }
 
-        //Кнопка проверки на принадлежность точки к выбранному полигону
+        //ГЉГ­Г®ГЇГЄГ  ГЇГ°Г®ГўГҐГ°ГЄГЁ Г­Г  ГЇГ°ГЁГ­Г Г¤Г«ГҐГ¦Г­Г®Г±ГІГј ГІГ®Г·ГЄГЁ ГЄ ГўГ»ГЎГ°Г Г­Г­Г®Г¬Гі ГЇГ®Г«ГЁГЈГ®Г­Гі
         private void button11_Click(object sender, EventArgs e)
         {
             if (state == States.AffineTransform)
             {
-                //строка чтобы людей пугать
-                MessageBox.Show(IsPointInPolygon(pointAffineTransform, polygons[Int32.Parse(comboBox1.Text)]) ? "Точка внутри полигона" : "Точка вне полигона");
+                //Г±ГІГ°Г®ГЄГ  Г·ГІГ®ГЎГ» Г«ГѕГ¤ГҐГ© ГЇГіГЈГ ГІГј
+                MessageBox.Show(IsPointInPolygon(pointAffineTransform, polygons[Int32.Parse(comboBox1.Text)]) ? "Г’Г®Г·ГЄГ  ГўГ­ГіГІГ°ГЁ ГЇГ®Г«ГЁГЈГ®Г­Г " : "Г’Г®Г·ГЄГ  ГўГ­ГҐ ГЇГ®Г«ГЁГЈГ®Г­Г ");
             }
         }
 
@@ -589,7 +589,7 @@ namespace Lab4
             float denominator = (p4.Y - p3.Y) * (p2.X - p1.X) - (p4.X - p3.X) * (p2.Y - p1.Y);
             if (denominator == 0)
             {
-                return null; // Параллельные линии
+                return null; // ГЏГ Г°Г Г«Г«ГҐГ«ГјГ­Г»ГҐ Г«ГЁГ­ГЁГЁ
             }
 
             float ua = ((p4.X - p3.X) * (p1.Y - p3.Y) - (p4.Y - p3.Y) * (p1.X - p3.X)) / denominator;
@@ -597,18 +597,62 @@ namespace Lab4
 
             if (ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1)
             {
-                // Вычисляем координаты точки пересечения
+                // Г‚Г»Г·ГЁГ±Г«ГїГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГІГ®Г·ГЄГЁ ГЇГҐГ°ГҐГ±ГҐГ·ГҐГ­ГЁГї
                 float intersectionX = p1.X + ua * (p2.X - p1.X);
                 float intersectionY = p1.Y + ua * (p2.Y - p1.Y);
                 return new Point((int)intersectionX, (int)intersectionY);
             }
 
-            return null; // Нет пересечения
+            return null; // ГЌГҐГІ ГЇГҐГ°ГҐГ±ГҐГ·ГҐГ­ГЁГї
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            state = States.DrawLine;
-        }
+public static int ClassifyPoint(Point p1, Point p2, Point point)
+{
+    double crossProduct = (p2.X - p1.X) * (point.Y - p1.Y) - (p2.Y - p1.Y) * (point.X - p1.X);
+
+    if (crossProduct > 0)
+    {
+        return 1; // РўРѕС‡РєР° СЃРїСЂР°РІР°
+    }
+    else if (crossProduct < 0)
+    {
+        return -1; // РўРѕС‡РєР° СЃР»РµРІР°
+    }
+    else
+    {
+        return 0; // РўРѕС‡РєР° РЅР° СЂРµР±СЂРµ
+    }
+}
+private void button12_Click(object sender, EventArgs e)
+{
+    state = States.DrawLine;
+}
+
+private void button13_Click(object sender, EventArgs e)
+{
+    int index = polygons.Count - 1;
+    Point p1 = polygons[index].polygon_points[0];
+    Point p2 = polygons[index].polygon_points[1];
+    Point point = pointAffineTransform; 
+
+    // Р’С‹Р·РѕРІРёС‚Рµ С„СѓРЅРєС†РёСЋ ClassifyPoint
+    int classification = ClassifyPoint(p1, p2, point);
+    textBox6.Text = $"РўРѕС‡РєР° {GetClassificationDescription(classification)}";
+
+}
+private static string GetClassificationDescription(int classification)
+{
+    switch (classification)
+    {
+        case -1:
+            return "СЃРїСЂР°РІР°";
+        case 1:
+            return "СЃР»РµРІР°";
+        case 0:
+            return "РЅР° СЂРµР±СЂРµ";
+        default:
+            return "РћС€РёР±РєР° РєР»Р°СЃСЃРёС„РёРєР°С†РёРё";
+    }
+}
     }
 }
