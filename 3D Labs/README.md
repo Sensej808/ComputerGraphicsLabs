@@ -13,9 +13,15 @@
 
 Управление осуществляется с помощью кнопок на окне.
 
-##Скачивание
+#Скачивание
 
 https://drive.google.com/file/d/1VXhiZue0uH03c3kle1VCnyWD4remZBJX/view?usp=sharing
 
 ## Примеры работ приложения:
+![image](https://github.com/user-attachments/assets/d87fc80a-ff1c-4e5e-9ccc-7fcc59efa242)
+![image](https://github.com/user-attachments/assets/cc6560be-c409-496e-b15c-deeae610a232)
+![image](https://github.com/user-attachments/assets/8c22229f-5304-4a9c-a4d3-59cf2034ca7c)
+![image](https://github.com/user-attachments/assets/0e285817-d8d7-4c4a-9e9d-16338a80f4c5)
+![image](https://github.com/user-attachments/assets/aed92977-76a7-4579-86c3-7fec73d732e6)
+![image](https://github.com/user-attachments/assets/f92fa262-cf76-40fd-8ea4-6091a84805f4)
 
