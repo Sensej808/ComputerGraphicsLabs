@@ -1,0 +1,90 @@
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.exe
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.deps.json
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.runtimeconfig.json
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.AssemblyReference.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.FormLab6.resources
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.MainMenu.resources
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.GenerateResource.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfoInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfo.cs
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\refint\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\labs\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.exe
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.deps.json
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.runtimeconfig.json
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.AssemblyReference.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.FormLab6.resources
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.MainMenu.resources
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.GenerateResource.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfoInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfo.cs
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\refint\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\bin\Debug\net6.0-windows\3D Labs.exe
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\bin\Debug\net6.0-windows\3D Labs.deps.json
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\bin\Debug\net6.0-windows\3D Labs.runtimeconfig.json
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\bin\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\bin\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.AssemblyReference.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.FormLab6.resources
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.MainMenu.resources
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.GenerateResource.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfoInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfo.cs
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\refint\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
+C:\Users\Сергей\Desktop\Компьютерная графика\ComputerGraphicsLabs\3D Labs — копия\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\bin\Debug\net6.0-windows\3D Labs.exe
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\bin\Debug\net6.0-windows\3D Labs.deps.json
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\bin\Debug\net6.0-windows\3D Labs.runtimeconfig.json
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\bin\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\bin\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.AssemblyReference.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.FormLab6.resources
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.MainMenu.resources
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.GenerateResource.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfoInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfo.cs
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\refint\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs Z буффер\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.exe
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.deps.json
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.runtimeconfig.json
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.AssemblyReference.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.FormLab6.resources
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.MainMenu.resources
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.GenerateResource.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfoInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfo.cs
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.CoreCompileInputs.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\refint\3D Labs.dll
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
+C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
