@@ -88,3 +88,21 @@ C:\Users\Сергей\Desktop\Компьютерная графика на вс�
 C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
 C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
 C:\Users\Сергей\Desktop\Компьютерная графика на всякий случай\3D Labs\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.exe
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.deps.json
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.runtimeconfig.json
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.dll
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\bin\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.FormLab6.resources
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\_3D_Labs.MainMenu.resources
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.GenerateResource.cache
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfoInputs.cache
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.AssemblyInfo.cs
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.csproj.CoreCompileInputs.cache
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.sourcelink.json
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.dll
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\refint\3D Labs.dll
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.pdb
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\3D Labs.genruntimeconfig.cache
+C:\Users\sasha\Documents\GitHub\ComputerGraphicsLabs\3D Labs\3D Labs\obj\Debug\net6.0-windows\ref\3D Labs.dll
