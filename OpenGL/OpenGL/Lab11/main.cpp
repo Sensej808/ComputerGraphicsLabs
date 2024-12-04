@@ -5,24 +5,13 @@
 #include <vector>
 #include <iostream>
 
-
-
-
-
-
-// ID шейдерной программы
 GLuint Program;
 // ID атрибута
 GLint Attrib_vertex;
 // ID Vertex Buffer Object
 GLuint VBO;
+GLuint Color_VBO;
 
-struct Vertex {
-    GLfloat x;
-    GLfloat y;
-};
-
-// Исходный код вершинного шейдера
 const char* VertexShaderSource = R"(
  #version 330 core
  in vec2 coord;
@@ -30,14 +19,65 @@ const char* VertexShaderSource = R"(
  gl_Position = vec4(coord, 0.0, 1.0);
  }
 )";
-// Исходный код фрагментного шейдера
+
+const char* VertexGradientShaderSource = R"(
+    #version 330 core
+    attribute vec3 col;
+    in vec2 coord;
+    out vec3 fragColor;
+    void main() {
+        gl_Position = vec4(coord, 0.0, 1.0);
+        fragColor = col;
+    }
+)";
+
+const char* FragGradientShaderSource = R"(
+    #version 330 core
+    in vec3 fragColor;
+    out vec4 color;
+    void main() {
+        color = vec4(fragColor, 1.0);
+    }
+)";
+
+const char* FragUniformShaderSource = R"(
+    #version 330 core
+    out vec4 color;
+    uniform vec4 u_color;
+    void main() {
+        color = u_color;
+    }
+)";
+
 const char* FragShaderSource = R"(
  #version 330 core
  out vec4 color;
+ const vec4 const_color = vec4(1, 0, 0, 1);
  void main() {
- color = vec4(0, 1, 0, 1);
+ color = const_color;
  }
 )";
+
+float colors[] = {
+     1.0f, 0.0f, 0.0f,  // Красный
+     0.0f, 1.0f, 0.0f,  // Зеленый
+     0.0f, 0.0f, 1.0f,  // Синий
+     1.0f, 1.0f, 0.0f,   // Желтый
+     1.0f, 0.0f, 1.0f,   // Фиолетовый
+
+};
+
+
+const char* CURRENT_VERTEX_SHADER = VertexGradientShaderSource;
+const char* CURRENT_FRAGMENT_SHADER = FragGradientShaderSource;
+enum Task {CONSTANT_COLOR, UNIFORM, GRADIENT};
+const Task cur = GRADIENT;
+const int verteces = 5;
+
+struct Vertex {
+    GLfloat x;
+    GLfloat y;
+};
 
 void checkOpenGLerror() {
 
@@ -57,17 +97,17 @@ void ShaderLog(unsigned int shader)
 }
 
 
-void InitVBO() {
+void InitVBO(Vertex* verts, int size) {
     glGenBuffers(1, &VBO);
     // Вершины нашего треугольника
-    Vertex triangle[3] = {
-     { -1.0f, -1.0f },
-     { 0.0f, 1.0f },
-     { 1.0f, -1.0f }
-    };
+
     // Передаем вершины в буфер
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(triangle), triangle, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, size, verts, GL_STATIC_DRAW);
+
+    glGenBuffers(1, &Color_VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, Color_VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
     checkOpenGLerror(); //Пример функции есть в лабораторной
     // Проверка ошибок OpenGL, если есть, то вывод в консоль тип ошибки
 }
@@ -76,7 +116,7 @@ void InitShader() {
     // Создаем вершинный шейдер
     GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
     // Передаем исходный код
-    glShaderSource(vShader, 1, &VertexShaderSource, NULL);
+    glShaderSource(vShader, 1, &CURRENT_VERTEX_SHADER, NULL);
     // Компилируем шейдер
     glCompileShader(vShader);
     std::cout << "vertex shader \n";
@@ -85,7 +125,7 @@ void InitShader() {
     // Создаем фрагментный шейдер
     GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
     // Передаем исходный код
-    glShaderSource(fShader, 1, &FragShaderSource, NULL);
+    glShaderSource(fShader, 1, &CURRENT_FRAGMENT_SHADER, NULL);
     // Компилируем шейдер
     glCompileShader(fShader);
     std::cout << "fragment shader \n";
@@ -118,14 +158,49 @@ void InitShader() {
 // Функция непосредственно отрисовки сцены
 void Draw() {
     glUseProgram(Program); // Устанавливаем шейдерную программу текущей
-    glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
-    glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
-    // сообщаем OpenGL как он должен интерпретировать вершинные данные.
-    glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
-    glDrawArrays(GL_TRIANGLES, 0, 3); // Передаем данные на видеокарту(рисуем)
+    int c = glGetAttribLocation(Program, "col");
+    switch (cur)
+    {
+    case CONSTANT_COLOR:
+        glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
+        glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
+        // сообщаем OpenGL как он должен интерпретировать вершинные данные.
+        glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
+        break;
+    case UNIFORM:
+    {
+        glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
+        glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
+        // сообщаем OpenGL как он должен интерпретировать вершинные данные.
+        glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
+        int u = glGetUniformLocation(Program, "u_color");
+        glUniform4f(u, 0, 1, 0.5, 1);
+        glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
+        
+        break;
+    }
+    case GRADIENT:
+    {
+        glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
+        glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
+        // сообщаем OpenGL как он должен интерпретировать вершинные данные.
+        glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, Color_VBO);
+        glVertexAttribPointer(c, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
+        glEnableVertexAttribArray(c);
+        break;
+    }
+        
+    default:
+        break;
+    }
+    
+    glDrawArrays(GL_POLYGON, 0, 5); // Передаем данные на видеокарту(рисуем)
 
     glDisableVertexAttribArray(Attrib_vertex); // Отключаем массив атрибутов
+    glDisableVertexAttribArray(c);
     glUseProgram(0); // Отключаем шейдерную программу
 
     checkOpenGLerror();
@@ -148,6 +223,7 @@ void ReleaseVBO() {
 }
 
 void Release() {
+
     // Шейдеры
     ReleaseShader();
     // Вершинный буфер
@@ -171,12 +247,31 @@ void SetIcon(sf::Window& wnd)
 
 // В момент инициализации разумно произвести загрузку текстур, моделей и других вещей
 void Init() {
+    Vertex triangle[3] = {
+{ -1.0f, -1.0f },
+{ 0.0f, 1.0f },
+{ 1.0f, -1.0f }
+    };
 
+    Vertex square[4] = {
+    { -0.9f, -0.9f },
+    { 0.9f, -0.9f },
+    { 0.9f, 0.9f },
+    { -0.9f, 0.9f },
+    };
+
+    Vertex pentagon[5] = {
+    { 0.0f, 1.0f },
+    { -0.951f, 0.309f },
+    { -0.588f, -0.809f },
+    { 0.588f, -0.809f },
+    { 0.951f, 0.309f },
+    };
     
     // Шейдеры
     InitShader();
     // Вершинный буфер
-    InitVBO();
+    InitVBO(pentagon, sizeof(pentagon));
 }
 
 int main() {
