@@ -1,0 +1,107 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl cobblestone_all.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png
+
+newmtl cobblestone_down.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png
+
+newmtl cobblestone_east.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png
+
+newmtl cobblestone_north.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png
+
+newmtl cobblestone_south.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png
+
+newmtl cobblestone_up.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png
+
+newmtl cobblestone_west.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+Pr 0.700000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_d C:/Users/vanya/AppData/Roaming/Blender Foundation/Blender/4.3/scripts/addons/MCprep_addon/MCprep_resources/resourcepacks/mcprep_default/assets/minecraft/textures/block/cobblestone.png

@@ -52,7 +52,7 @@ const char* FragUniformShaderSource = R"(
 const char* FragShaderSource = R"(
  #version 330 core
  out vec4 color;
- const vec4 const_color = vec4(1, 0, 0, 1);
+ const vec4 const_color = vec4(1, 1, 0, 1);
  void main() {
  color = const_color;
  }
@@ -80,7 +80,11 @@ struct Vertex {
 };
 
 void checkOpenGLerror() {
-
+    GLenum errCode;
+    // Коды ошибок можно смотреть тут
+    // https://www.khronos.org/opengl/wiki/OpenGL_Error
+    if ((errCode = glGetError()) != GL_NO_ERROR)
+        std::cout << "OpenGl error!: " << errCode << std::endl;
 }
 
 void ShaderLog(unsigned int shader)
@@ -159,36 +163,28 @@ void InitShader() {
 void Draw() {
     glUseProgram(Program); // Устанавливаем шейдерную программу текущей
     int c = glGetAttribLocation(Program, "col");
+    glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
+    glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
+    // сообщаем OpenGL как он должен интерпретировать вершинные данные.
+    glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
     switch (cur)
     {
     case CONSTANT_COLOR:
-        glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
-        glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
-        // сообщаем OpenGL как он должен интерпретировать вершинные данные.
-        glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
+        
         break;
     case UNIFORM:
     {
-        glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
-        glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
-        // сообщаем OpenGL как он должен интерпретировать вершинные данные.
-        glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
         int u = glGetUniformLocation(Program, "u_color");
         glUniform4f(u, 0, 1, 0.5, 1);
-        glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
         
         break;
     }
     case GRADIENT:
     {
-        glEnableVertexAttribArray(Attrib_vertex); // Включаем массив атрибутов
-        glBindBuffer(GL_ARRAY_BUFFER, VBO); // Подключаем VBO
-        // сообщаем OpenGL как он должен интерпретировать вершинные данные.
-        glVertexAttribPointer(Attrib_vertex, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
         glBindBuffer(GL_ARRAY_BUFFER, Color_VBO);
-        glVertexAttribPointer(c, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0); // Отключаем VBO
+        glVertexAttribPointer(c, 3, GL_FLOAT, GL_FALSE, 0,0);
         glEnableVertexAttribArray(c);
         break;
     }
@@ -197,7 +193,7 @@ void Draw() {
         break;
     }
     
-    glDrawArrays(GL_POLYGON, 0, 5); // Передаем данные на видеокарту(рисуем)
+    glDrawArrays(GL_TRIANGLE_FAN, 0, verteces); // Передаем данные на видеокарту(рисуем)
 
     glDisableVertexAttribArray(Attrib_vertex); // Отключаем массив атрибутов
     glDisableVertexAttribArray(c);
@@ -267,11 +263,19 @@ void Init() {
     { 0.588f, -0.809f },
     { 0.951f, 0.309f },
     };
+
+    Vertex fan[5] = {
+    { 0.0f, -1.0f },
+    { 0.951f, -0.309f },
+    { 0.588f, 0.809f },
+    { -0.588f, 0.809f },
+    { -0.951f, -0.309f },
+    };
     
     // Шейдеры
     InitShader();
     // Вершинный буфер
-    InitVBO(pentagon, sizeof(pentagon));
+    InitVBO(fan, sizeof(fan));
 }
 
 int main() {
